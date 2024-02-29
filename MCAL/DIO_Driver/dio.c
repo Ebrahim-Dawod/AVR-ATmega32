@@ -295,13 +295,13 @@ void DIO_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *value) // read dio p
 		case PORT_C :
 		
 			//*value =((PINC&(1<<pinNumber))>>pinNumber); // read this pin (get state)
-			get_bit(pinNumber,PINA, &value); // read this bit (get bit state)
+			get_bit(pinNumber,PINC, &value); // read this bit (get bit state)
 			break;
 		
 		case PORT_D :
 		
 			//*value =((PIND&(1<<pinNumber))>>pinNumber); // read this pin (get state)
-			get_bit(pinNumber,PINA, &value); // read this bit (get bit state)
+			get_bit(pinNumber,PIND, &value); // read this bit (get bit state)
 			break;
 		
 
