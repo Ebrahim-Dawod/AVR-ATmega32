@@ -5,26 +5,30 @@
  *  
  */ 
 
-
 #ifndef DIO_H_
 #define DIO_H_
 
 
 //             what should i write here ?
 
-// all include
+// all include(s)
 
 #include "./Utilities/types.h"
-#include "./Utilities/registers_atmega32.h"  // I'm Currently located in main.c folder 
+#include "./MCAL/registers_atmega32.h"  // I'm Currently located in main.c folder
+#include "./MCAL/Bit_Manipulation/bit_manipulation.h"
+
 
 // all internal driver typedefs
 // all driver macros
+
 
 // PORT Numbers (PORTx)
 #define PORT_A 'A'
 #define PORT_B 'B'
 #define PORT_C 'C'
 #define PORT_D 'D'
+
+
 
 // Pin Direction & Modes
 #define OUT 1				//	(DDRx)	

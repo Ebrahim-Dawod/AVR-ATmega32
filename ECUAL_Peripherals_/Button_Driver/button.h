@@ -9,6 +9,9 @@
 #define BUTTON_H_
 
 
+#include "./MCAL/DIO_Driver/dio.h"
+
+
 
 // Button States : Pressed , Not Pressed , LONG PRESS
 
@@ -83,10 +86,11 @@ Release Event:
 
 
 ---------------------------------------------------------------------------------------------------------------
-1- when button connected between the MCU & Ground: (Normal case) (no internal pull-up)  //Not Recommended for a Button Use Because of Button exposure to Noise (Noise will send a False PRESSED Status)
+1- when button connected between the MCU & Ground: (Normal case) (no internal pull-up)  
 ----------------------------------------------
 
-//this Button connection is Not Recommended if you want a safe & Reliable Results
+//this Button connection is Not Recommended Because it will Leave the Pin in a floating state (Not Logic HIGH Nor LOW) it will expose the pin to Noise (Noise will send a False PRESSED Status)
+
 
 	- when Not Pressed :
 		input logic is mostly (Unknown State)(High Impedance) (Because of Environment Noise will make it High even if it is Not Pressed)
@@ -98,9 +102,9 @@ Release Event:
 	Input Logic is Low (Ground)(0 Volt) (Long Time)
 	 
 ---------------------------------------------------------------------------------------------------------------
-2- when button connected between the MCU & VCC : (Normal case) (no internal pull-up) (no external pull-up or pull-down)  //Not Recommended for a Button Use Because of Button exposure to Noise (Noise will send a False PRESSED Status)
+2- when button connected between the MCU & VCC : (Normal case) (no internal pull-up) (no external pull-up or pull-down)  
 --------------------------------------------
-//this Button connection is Not Recommended Because of Noise if you want a safe & Reliable Results
+//this Button connection is Not Recommended Because it will Leave the Pin in a floating state (Not Logic HIGH Nor LOW) it will expose the pin to Noise (Noise will send a False PRESSED Status)
 
 
 	- when Not Pressed :
@@ -168,7 +172,7 @@ Release Event:
 
 void Button_init(uint8_t pinNumber,uint8_t portNumber,uint8_t InputPinMode);  // Direction = INPUT
 
-void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState); 
+void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState); // get Button state (whether Pressed or Not Pressed) (will be gotten using ButtonState pointer value)
 
 
 

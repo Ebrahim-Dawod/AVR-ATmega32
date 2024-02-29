@@ -16,7 +16,7 @@ static uint8_t ButtonState=0;
 
 
 
-void Application_init()
+void Application_init()			 //  to initiate the Used Peripherals &  Services --> Includes your code that runs once
 {
 	
 	
@@ -47,7 +47,7 @@ void Application_init()
 
 
 
-void Application_run()
+void Application_run()			// Includes your application code that Runs forever 
 {
 
 
@@ -59,19 +59,20 @@ void Application_run()
 			Button_read(pinNumber,PORT_A,&ButtonState); 
 			
 			if(ButtonState==PRESSED)
-			
+			{			
 				LED_on(pinNumber,PORT_D);
-				
+			}
 			else  // ButtonState==NOT_PRESSED
-			
+			{
 				LED_off(pinNumber,PORT_D);
-					
+			}
 		} // End of for
-			
+		
+			/*
 		_delay_ms(300);
 		DIO_toggle( 5, PORT_B) ; // need DIO_init first
 		_delay_ms(300);
-		
+		*/
 		
 		
     }	// End of  while()

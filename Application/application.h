@@ -11,13 +11,14 @@
 
 
 
-#include "./Utilities/registers_atmega32.h"
-#include "./main.h"
-#include "./MCAL/DIO_Driver/dio.h"
+
+#include "./MCAL/configurations_atmega32.h"
+
+
 #include "./ECUAL_Peripherals_/LED_Driver/LED_diode.h"
 #include "./ECUAL_Peripherals_/Button_Driver/button.h"
-//#include <avr/io.h>
-#include <util/delay.h>
+
+
 
 
 

@@ -4,7 +4,7 @@
  * 
  */ 
 
-#include "./MCAL/DIO_Driver/dio.h"
+
 #include "../Button_Driver/button.h"
 
 
@@ -22,27 +22,12 @@ void Button_init(uint8_t pinNumber,uint8_t portNumber,uint8_t InputPinMode)  // 
 		
 			DIO_init(pinNumber,portNumber,INTERNAL_PULL_UP_INPUT);
 			break;
-			 
-// TODO : Optimize this code  	 
-		case NO_PULL_BUTTON_TO_VCC_INPUT:
+			  	 
+		default: // cases included : EXTERNAL_PULL_UP_INPUT , EXTERNAL_PULL_DOWN_INPUT , NO_PULL_BUTTON_TO_GROUND_INPUT , NO_PULL_BUTTON_TO_VCC_INPUT
 			
 			DIO_init(pinNumber,portNumber,IN); 
 			break;
 			
-		case NO_PULL_BUTTON_TO_GROUND_INPUT:
-		
-			DIO_init(pinNumber,portNumber,IN);
-			break;
-		
-		case EXTERNAL_PULL_UP_INPUT:
-			
-			DIO_init(pinNumber,portNumber,IN); 
-			break;
-		
-		case EXTERNAL_PULL_DOWN_INPUT:
-			
-			DIO_init(pinNumber,portNumber,IN); 
-			break;
 	 }	//End of switch
 			
 Input_Pin_Mode_G = InputPinMode; // transmit Value of InputPinMode to outside of this function	
@@ -53,7 +38,7 @@ Input_Pin_Mode_G = InputPinMode; // transmit Value of InputPinMode to outside of
 
 
 
-void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState)		
+void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState)		// get Button state (whether Pressed or Not Pressed) (will be gotten using ButtonState pointer value)
 {
 	
 	 uint8_t input_value;
@@ -82,7 +67,7 @@ void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState)
 				//Error Handling
 			}
 			break;
-		//////////////////
+		////////////////// 
 		case EXTERNAL_PULL_UP_INPUT:
 		
 			if(input_value==HIGH)
@@ -115,7 +100,7 @@ void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState)
 			}
 			break;
 		/////////////////
-		case NO_PULL_BUTTON_TO_GROUND_INPUT :	//Not Recommended for a Button Use Because of Button exposure to Noise (Noise will send a False PRESSED Status)
+		case NO_PULL_BUTTON_TO_GROUND_INPUT :	//this Button connection is Not Recommended Because it will Leave the Pin in a floating state (Not Logic HIGH Nor LOW) it will expose the pin to Noise (Noise will send a False PRESSED Status)
 			
 			if(input_value==LOW)
 			{
@@ -128,7 +113,8 @@ void Button_read(uint8_t pinNumber,uint8_t portNumber,uint8_t *ButtonState)
 			}
 			break;
 		//////////////////////
-		case NO_PULL_BUTTON_TO_VCC_INPUT : //Not Recommended for a Button Use Because of Button exposure to Noise (Noise will send a False PRESSED Status)
+		case NO_PULL_BUTTON_TO_VCC_INPUT : //this Button connection is Not Recommended Because it will Leave the Pin in a floating state (Not Logic HIGH Nor LOW) it will expose the pin to Noise (Noise will send a False PRESSED Status)
+
 			
 			if(input_value==HIGH)
 			{

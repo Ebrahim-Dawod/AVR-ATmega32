@@ -4,7 +4,7 @@
 
 
 /***********************************************************************/
-/*  Build your own driver library     2. Driver library (.c & .h)      */
+/*  Build your own driver library (Module)     2. Driver library (.c & .h)      */
 /***********************************************************************/
 
 

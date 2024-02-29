@@ -10,7 +10,7 @@
 #define LED_DIODE_H_
 
 #include "./Utilities/types.h"
-
+#include "./MCAL/DIO_Driver/dio.h"
 
 
 // LED Activating Logic Types:
@@ -74,6 +74,7 @@ void LED_on(uint8_t pinNumber,uint8_t portNumber);	 // write HIGH on LED pin -->
 
 void LED_off(uint8_t pinNumber,uint8_t portNumber);		 // write LOW on LED pin --> to be used as (LED OFF or LED ON) depend on the connected circuit (Active high or Active low Gates/Transistors (Current driver))
 
+void LED_toggle(uint8_t pinNumber,uint8_t portNumber);  //toggle LED (on <-> off)
 
 // TODO_Advanced
 //void LED_dim(); // Advanced function (learn Timers & PWM then develop this function) 

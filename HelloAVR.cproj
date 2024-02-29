@@ -155,7 +155,13 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main.h">
+    <Compile Include="MCAL\Bit_Manipulation\bit_manipulation.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\Bit_Manipulation\bit_manipulation.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\configurations_atmega32.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO_Driver\dio.c">
@@ -164,7 +170,7 @@
     <Compile Include="MCAL\DIO_Driver\dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utilities\registers_atmega32.h">
+    <Compile Include="MCAL\registers_atmega32.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Utilities\types.h">
@@ -178,6 +184,7 @@
     <Folder Include="ECUAL_Peripherals_\LED_Driver" />
     <Folder Include="MCAL" />
     <Folder Include="MCAL\DIO_Driver\" />
+    <Folder Include="MCAL\Bit_Manipulation" />
     <Folder Include="Utilities" />
   </ItemGroup>
   <ItemGroup>

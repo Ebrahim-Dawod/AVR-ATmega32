@@ -10,5 +10,7 @@ ECUAL_Peripherals_\LED_Driver\LED_diode.c
 
 main.c
 
+MCAL\Bit_Manipulation\bit_manipulation.c
+
 MCAL\DIO_Driver\dio.c
 
