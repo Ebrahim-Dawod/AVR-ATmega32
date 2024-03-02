@@ -1,2 +1,4 @@
 # HelloAVR
- ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/../main/assets/HelloAVR_ Schematic_Capture.SVG)
+ ![Schematic Capture image of the Project]
+ /../main/assets/HelloAVR_ Schematic_Capture.SVG
+ /../main/assets/images/electrocat.png
