@@ -18,19 +18,22 @@ Discarded input sections
  .text          0x00000000        0x0 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  .data          0x00000000        0x0 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  .bss           0x00000000        0x0 ECUAL_Peripherals_/LED_Driver/LED_diode.o
+ .text.LED_toggle
+                0x00000000        0x6 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 MCAL/Bit_Manipulation/bit_manipulation.o
- .data          0x00000000        0x0 MCAL/Bit_Manipulation/bit_manipulation.o
- .bss           0x00000000        0x0 MCAL/Bit_Manipulation/bit_manipulation.o
- .text.toggle_bit
-                0x00000000       0x18 MCAL/Bit_Manipulation/bit_manipulation.o
  .text          0x00000000        0x0 MCAL/DIO_Driver/dio.o
  .data          0x00000000        0x0 MCAL/DIO_Driver/dio.o
  .bss           0x00000000        0x0 MCAL/DIO_Driver/dio.o
  .text.DIO_toggle
-                0x00000000       0x3e MCAL/DIO_Driver/dio.o
+                0x00000000       0x7e MCAL/DIO_Driver/dio.o
+ .text          0x00000000        0x0 MCAL/Timer_Counter_driver/timer_counter.o
+ .data          0x00000000        0x0 MCAL/Timer_Counter_driver/timer_counter.o
+ .bss           0x00000000        0x0 MCAL/Timer_Counter_driver/timer_counter.o
+ .debug_line    0x00000000        0x0 MCAL/Timer_Counter_driver/timer_counter.o
+ .debug_str     0x00000000      0x10c MCAL/Timer_Counter_driver/timer_counter.o
+ .comment       0x00000000       0x31 MCAL/Timer_Counter_driver/timer_counter.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -83,8 +86,8 @@ LOAD Application/application.o
 LOAD ECUAL_Peripherals_/Button_Driver/button.o
 LOAD ECUAL_Peripherals_/LED_Driver/LED_diode.o
 LOAD main.o
-LOAD MCAL/Bit_Manipulation/bit_manipulation.o
 LOAD MCAL/DIO_Driver/dio.o
+LOAD MCAL/Timer_Counter_driver/timer_counter.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -194,7 +197,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x438
+.text           0x00000000      0x580
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32a/avr5/crtatmega32a.o
                 0x00000000                __vector_default
@@ -295,27 +298,20 @@ END GROUP
                 0x000001d2                LED_off
  .text.main     0x000001e2        0xe main.o
                 0x000001e2                main
- .text.set_bit  0x000001f0       0x18 MCAL/Bit_Manipulation/bit_manipulation.o
-                0x000001f0                set_bit
- .text.clear_bit
-                0x00000208       0x1a MCAL/Bit_Manipulation/bit_manipulation.o
-                0x00000208                clear_bit
- .text.get_bit  0x00000222       0x30 MCAL/Bit_Manipulation/bit_manipulation.o
-                0x00000222                get_bit
  .text.DIO_init
-                0x00000252       0xf0 MCAL/DIO_Driver/dio.o
-                0x00000252                DIO_init
+                0x000001f0      0x1ba MCAL/DIO_Driver/dio.o
+                0x000001f0                DIO_init
  .text.DIO_write
-                0x00000342       0x86 MCAL/DIO_Driver/dio.o
-                0x00000342                DIO_write
+                0x000003aa      0x112 MCAL/DIO_Driver/dio.o
+                0x000003aa                DIO_write
  .text.DIO_read
-                0x000003c8       0x6c MCAL/DIO_Driver/dio.o
-                0x000003c8                DIO_read
-                0x00000434                . = ALIGN (0x2)
+                0x000004bc       0xc0 MCAL/DIO_Driver/dio.o
+                0x000004bc                DIO_read
+                0x0000057c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000434        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000434                _exit
-                0x00000434                exit
+ .fini9         0x0000057c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000057c                _exit
+                0x0000057c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -334,11 +330,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000434        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000057c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000438                _etext = .
+                0x00000580                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000438
+.data           0x00800060        0x0 load address 0x00000580
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -362,8 +358,8 @@ END GROUP
                 0x00800062        0x1 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  *(COMMON)
                 0x00800063                PROVIDE (__bss_end, .)
-                0x00000438                __data_load_start = LOADADDR (.data)
-                0x00000438                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000580                __data_load_start = LOADADDR (.data)
+                0x00000580                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800063        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -416,7 +412,6 @@ END GROUP
  .comment       0x00000030       0x31 ECUAL_Peripherals_/Button_Driver/button.o
  .comment       0x00000030       0x31 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 MCAL/Bit_Manipulation/bit_manipulation.o
  .comment       0x00000030       0x31 MCAL/DIO_Driver/dio.o
 
 .note.gnu.avr.deviceinfo
@@ -439,85 +434,76 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x110
+.debug_aranges  0x00000000       0xe0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 Application/application.o
  .debug_aranges
                 0x00000028       0x28 ECUAL_Peripherals_/Button_Driver/button.o
  .debug_aranges
-                0x00000050       0x30 ECUAL_Peripherals_/LED_Driver/LED_diode.o
+                0x00000050       0x38 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  .debug_aranges
-                0x00000080       0x20 main.o
+                0x00000088       0x20 main.o
  .debug_aranges
-                0x000000a0       0x38 MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_aranges
-                0x000000d8       0x38 MCAL/DIO_Driver/dio.o
+                0x000000a8       0x38 MCAL/DIO_Driver/dio.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x102a
+.debug_info     0x00000000      0xbb7
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_info    0x000004e6      0x1dc Application/application.o
  .debug_info    0x000006c2      0x15e ECUAL_Peripherals_/Button_Driver/button.o
- .debug_info    0x00000820      0x15f ECUAL_Peripherals_/LED_Driver/LED_diode.o
- .debug_info    0x0000097f       0x83 main.o
- .debug_info    0x00000a02      0x146 MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_info    0x00000b48      0x4e2 MCAL/DIO_Driver/dio.o
+ .debug_info    0x00000820      0x1bd ECUAL_Peripherals_/LED_Driver/LED_diode.o
+ .debug_info    0x000009dd       0x83 main.o
+ .debug_info    0x00000a60      0x157 MCAL/DIO_Driver/dio.o
 
-.debug_abbrev   0x00000000      0x8ab
+.debug_abbrev   0x00000000      0x7da
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_abbrev  0x000004a3       0xc9 Application/application.o
  .debug_abbrev  0x0000056c       0xa5 ECUAL_Peripherals_/Button_Driver/button.o
  .debug_abbrev  0x00000611       0xb4 ECUAL_Peripherals_/LED_Driver/LED_diode.o
  .debug_abbrev  0x000006c5       0x65 main.o
- .debug_abbrev  0x0000072a       0x8e MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_abbrev  0x000007b8       0xf3 MCAL/DIO_Driver/dio.o
+ .debug_abbrev  0x0000072a       0xb0 MCAL/DIO_Driver/dio.o
 
-.debug_line     0x00000000      0x7dd
+.debug_line     0x00000000      0x6fc
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_line    0x00000115      0x146 Application/application.o
  .debug_line    0x0000025b      0x144 ECUAL_Peripherals_/Button_Driver/button.o
- .debug_line    0x0000039f       0xd0 ECUAL_Peripherals_/LED_Driver/LED_diode.o
- .debug_line    0x0000046f       0x6f main.o
- .debug_line    0x000004de       0xbb MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_line    0x00000599      0x244 MCAL/DIO_Driver/dio.o
+ .debug_line    0x0000039f       0xe7 ECUAL_Peripherals_/LED_Driver/LED_diode.o
+ .debug_line    0x00000486       0x6f main.o
+ .debug_line    0x000004f5      0x207 MCAL/DIO_Driver/dio.o
 
-.debug_frame    0x00000000      0x1c4
+.debug_frame    0x00000000      0x168
  *(.debug_frame)
  .debug_frame   0x00000000       0x3c Application/application.o
  .debug_frame   0x0000003c       0x58 ECUAL_Peripherals_/Button_Driver/button.o
- .debug_frame   0x00000094       0x4c ECUAL_Peripherals_/LED_Driver/LED_diode.o
- .debug_frame   0x000000e0       0x24 main.o
- .debug_frame   0x00000104       0x54 MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_frame   0x00000158       0x6c MCAL/DIO_Driver/dio.o
+ .debug_frame   0x00000094       0x5c ECUAL_Peripherals_/LED_Driver/LED_diode.o
+ .debug_frame   0x000000f0       0x24 main.o
+ .debug_frame   0x00000114       0x54 MCAL/DIO_Driver/dio.o
 
-.debug_str      0x00000000      0x47d
+.debug_str      0x00000000      0x42e
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_str     0x00000196      0x179 Application/application.o
  .debug_str     0x0000030f       0x74 ECUAL_Peripherals_/Button_Driver/button.o
                                 0x197 (size before relaxing)
- .debug_str     0x00000383       0x61 ECUAL_Peripherals_/LED_Driver/LED_diode.o
-                                0x18c (size before relaxing)
- .debug_str     0x000003e4       0x11 main.o
+ .debug_str     0x00000383       0x77 ECUAL_Peripherals_/LED_Driver/LED_diode.o
+                                0x1a2 (size before relaxing)
+ .debug_str     0x000003fa       0x11 main.o
                                 0x11f (size before relaxing)
- .debug_str     0x000003f5       0x5a MCAL/Bit_Manipulation/bit_manipulation.o
-                                0x15f (size before relaxing)
- .debug_str     0x0000044f       0x2e MCAL/DIO_Driver/dio.o
-                                0x17f (size before relaxing)
+ .debug_str     0x0000040b       0x23 MCAL/DIO_Driver/dio.o
+                                0x15a (size before relaxing)
 
-.debug_loc      0x00000000      0xc02
+.debug_loc      0x00000000      0xad9
  *(.debug_loc)
  .debug_loc     0x00000000       0x7f Application/application.o
  .debug_loc     0x0000007f      0x1b3 ECUAL_Peripherals_/Button_Driver/button.o
- .debug_loc     0x00000232      0x115 ECUAL_Peripherals_/LED_Driver/LED_diode.o
- .debug_loc     0x00000347       0x26 MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_loc     0x0000036d      0x895 MCAL/DIO_Driver/dio.o
+ .debug_loc     0x00000232      0x157 ECUAL_Peripherals_/LED_Driver/LED_diode.o
+ .debug_loc     0x00000389      0x750 MCAL/DIO_Driver/dio.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -537,14 +523,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xb0
+.debug_ranges   0x00000000       0x90
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 Application/application.o
  .debug_ranges  0x00000018       0x18 ECUAL_Peripherals_/Button_Driver/button.o
- .debug_ranges  0x00000030       0x20 ECUAL_Peripherals_/LED_Driver/LED_diode.o
- .debug_ranges  0x00000050       0x10 main.o
- .debug_ranges  0x00000060       0x28 MCAL/Bit_Manipulation/bit_manipulation.o
- .debug_ranges  0x00000088       0x28 MCAL/DIO_Driver/dio.o
+ .debug_ranges  0x00000030       0x28 ECUAL_Peripherals_/LED_Driver/LED_diode.o
+ .debug_ranges  0x00000058       0x10 main.o
+ .debug_ranges  0x00000068       0x28 MCAL/DIO_Driver/dio.o
 
 .debug_macro
  *(.debug_macro)

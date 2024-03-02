@@ -15,7 +15,7 @@
 
 #include "./Utilities/types.h"
 #include "./MCAL/registers_atmega32.h"  // I'm Currently located in main.c folder
-#include "./MCAL/Bit_Manipulation/bit_manipulation.h"
+#include "./Utilities/bit_manipulation.h"
 
 
 // all internal driver typedefs
@@ -44,11 +44,9 @@
 
 
 
-
 // Pin Value  
 #define LOW 0
 #define HIGH 1
-
 
 
 

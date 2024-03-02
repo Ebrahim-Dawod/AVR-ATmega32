@@ -10,8 +10,38 @@
 #define BIT_MANIPULATION_H_
 
 
+
+
+
+// Bit Manipulation: (Function - like macros)
+//------------------
+
+// write 1 on this pin
+#define SET_BIT(pinNumber,portName)			*portName |= (1<<pinNumber)//;
+
+// write 0 on this pin
+#define CLEAR_BIT(pinNumber,portName)		*portName &= ~(1<<pinNumber)//;
+
+// read this bit (get state)
+#define GET_BIT(pinNumber,portName,value)	*value =((*portName)&(1<<pinNumber))>>pinNumber//;
+
+// Toggle Bit value (0 <-> 1)    ( ^ XOR ) (1 XOR 1 = 0) (0 XOR 1 = 1)
+#define TOGGLE_BIT(pinNumber,portName)		*portName ^=(1<<pinNumber)//;
+
+
+
+
+
+
+/*
+
 #include "./MCAL/registers_atmega32.h"  // I'm Currently located in main.c folder 
 #include "./Utilities/types.h"
+
+
+
+
+
 
 
 
@@ -24,7 +54,7 @@ void get_bit(uint8_t pinNumber,volatile uint8_t *portName,uint8_t **value); // r
 
 void toggle_bit(uint8_t pinNumber,volatile uint8_t *portName); // toggle pin value (0 <-> 1)
 
-
+*/
 
 #endif /* BIT_MANIPULATION_H_ */
 

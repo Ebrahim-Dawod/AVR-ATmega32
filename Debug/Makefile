@@ -39,7 +39,7 @@ SUBDIRS :=  \
 ../ECUAL_Peripherals_/LED_Driver \
 ../MCAL \
 ../MCAL/DIO_Driver/ \
-../MCAL/Bit_Manipulation \
+../MCAL/Timer_Counter_driver \
 ../Utilities
 
 
@@ -49,8 +49,8 @@ C_SRCS +=  \
 ../ECUAL_Peripherals_/Button_Driver/button.c \
 ../ECUAL_Peripherals_/LED_Driver/LED_diode.c \
 ../main.c \
-../MCAL/Bit_Manipulation/bit_manipulation.c \
-../MCAL/DIO_Driver/dio.c
+../MCAL/DIO_Driver/dio.c \
+../MCAL/Timer_Counter_driver/timer_counter.c
 
 
 PREPROCESSING_SRCS += 
@@ -64,32 +64,32 @@ Application/application.o \
 ECUAL_Peripherals_/Button_Driver/button.o \
 ECUAL_Peripherals_/LED_Driver/LED_diode.o \
 main.o \
-MCAL/Bit_Manipulation/bit_manipulation.o \
-MCAL/DIO_Driver/dio.o
+MCAL/DIO_Driver/dio.o \
+MCAL/Timer_Counter_driver/timer_counter.o
 
 OBJS_AS_ARGS +=  \
 Application/application.o \
 ECUAL_Peripherals_/Button_Driver/button.o \
 ECUAL_Peripherals_/LED_Driver/LED_diode.o \
 main.o \
-MCAL/Bit_Manipulation/bit_manipulation.o \
-MCAL/DIO_Driver/dio.o
+MCAL/DIO_Driver/dio.o \
+MCAL/Timer_Counter_driver/timer_counter.o
 
 C_DEPS +=  \
 Application/application.d \
 ECUAL_Peripherals_/Button_Driver/button.d \
 ECUAL_Peripherals_/LED_Driver/LED_diode.d \
 main.d \
-MCAL/Bit_Manipulation/bit_manipulation.d \
-MCAL/DIO_Driver/dio.d
+MCAL/DIO_Driver/dio.d \
+MCAL/Timer_Counter_driver/timer_counter.d
 
 C_DEPS_AS_ARGS +=  \
 Application/application.d \
 ECUAL_Peripherals_/Button_Driver/button.d \
 ECUAL_Peripherals_/LED_Driver/LED_diode.d \
 main.d \
-MCAL/Bit_Manipulation/bit_manipulation.d \
-MCAL/DIO_Driver/dio.d
+MCAL/DIO_Driver/dio.d \
+MCAL/Timer_Counter_driver/timer_counter.d
 
 OUTPUT_FILE_PATH +=HelloAVR.elf
 
@@ -133,14 +133,14 @@ ECUAL_Peripherals_/LED_Driver/LED_diode.o: ../ECUAL_Peripherals_/LED_Driver/LED_
 	@echo Finished building: $<
 	
 
-MCAL/Bit_Manipulation/bit_manipulation.o: ../MCAL/Bit_Manipulation/bit_manipulation.c
+MCAL/DIO_Driver/dio.o: ../MCAL/DIO_Driver/dio.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include" -I".."  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/DIO_Driver/dio.o: ../MCAL/DIO_Driver/dio.c
+MCAL/Timer_Counter_driver/timer_counter.o: ../MCAL/Timer_Counter_driver/timer_counter.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include" -I".."  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
