@@ -1,5 +1,0 @@
-/*
- * timer_counter.c
- *
- * 
- */ 
